@@ -11,13 +11,76 @@ class DoublyCircularLinkedList:
         self.count = 0
 
     def add_at_tail(self, data) -> bool:
-        # Write code here
+        if self.head is None:
+            new_node = Node(data)
+            new_node.next = new_node
+            new_node.previous = new_node
+            self.head = new_node
+            count+=1
+            return True
+        else:
+            new_node = Node(data)
+            temp = self.head
+            for x in range(count-1):
+                temp = temp.next
+            temp.next = new_node
+            new_node.previous = temp 
+            self.head.previous = new_node
+            new_node.next = self.head
+            count+=1
+            return True
 
     def add_at_head(self, data) -> bool:
-        # Write code here
+        if self.head is None:
+            new_node = Node(data)
+            new_node.next = new_node
+            new_node.previous = new_node
+            new_node = self.head
+            count +=1
+            return True
+        else:
+            new_node = Node(data)
+            new_node.next = self.head
+            self.head.previous = new_node
+            temp = self.head
+            for i in range(count-1):
+                temp = temp.next
+            temp.next = new_node
+            new_node.previous = temp
+            count+=1
+            return True
+            
 
     def add_at_index(self, index, data) -> bool:
-        # Write code here
+        if index<0 or index>=count:
+            return False
+        if self.head is None:
+            new_node = Node(data)
+            new_node.next = new_node
+            new_node.previous = new_node
+            new_node = self.head
+            count +=1
+            return True
+        else:
+            new_node = Node(data)
+            temp = self.head
+            if index == 0:
+                temp = self.head
+                for x in range(count-1):
+                    temp = temp.next
+                temp.next = new_node
+                new_node.previous = temp 
+                self.head.previous = new_node
+                new_node.next = self.head
+                count+=1
+                return True
+            else:
+                for x in range(index):
+                    temp = temp.next
+                    a = temp.previous
+                    a.next = new_node
+                    new_mode.next=temp
+            
 
     def get(self, index) -> int:
         # Write code here
